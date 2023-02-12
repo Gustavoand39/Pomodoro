@@ -1,0 +1,23 @@
+@media screen and (max-width: 900px) {
+    .timer {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    html {
+        font-size: 46.9%;
+    }
+
+    .header {
+        width: 100%;
+    }
+
+    .timer {
+        width: 80%;
+    }
+
+    .info {
+        width: 80%;
+    }
+}
