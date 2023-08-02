@@ -20,7 +20,7 @@ Este proyecto es mi primer intento de aplicar mis conocimientos iniciales en pro
 
 ## Posibles mejoras
 
-Este proyecto fue mi primer intento de crear un temporizador Pomodoro, y es probable que contenga algunas posibles mejoras y fallos en el código. A medida que adquiera más conocimientos y habilidades en programación web, planeo mejorar y optimizar el proyecto, lo cual incluye:
+Este proyecto fue mi primer intento de crear una página web básica, y es probable que contenga algunas posibles mejoras y fallos en el código. A medida que adquiera más conocimientos y habilidades en programación web, planeo mejorar y optimizar el proyecto, lo cual incluye:
 
 - Mejorar la estructura HTML y asegurar la accesibilidad.
 - Refactorizar el código JavaScript para hacerlo más modular y fácil de mantener.
