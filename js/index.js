@@ -1,120 +1,116 @@
-let minSpan = document.getElementById("minutes"),
-    secSpan = document.getElementById("seconds"),
-    btnIniciar = document.getElementById("btn-iniciar"),
-    btnPausar = document.getElementById("btn-pausar"),
-    btnReiniciar = document.getElementById("btn-reiniciar"),
+// Variables del DOM
+let showMinutes = document.getElementById("showMinutes"),
+    showSeconds = document.getElementById("showSeconds"),
+    btnStart = document.getElementById("btn-start"),
+    btnPause = document.getElementById("btn-pause"),
+    btnRestart = document.getElementById("btn-restart"),
     btnPomodoro = document.getElementById("btn-pomodoro"),
-    btnDescanso = document.getElementById("btn-descanso"),
-    timer = document.getElementById("timer");
+    btnRelax = document.getElementById("btn-relax"),
+    timerContainer = document.getElementById("timerContainer");
 
 // Inicialización de variables
-let start = false,
-    pause = false,
-    descanso = false,
+let timerStarted = false,
+    timerPaused = false,
+    relaxTime = false,
     timerId,
-    secondsRemaining,
-    minutesRemaining;
-
-let minutes = 24,
-    seconds = 59;
-
-// Función para iniciar el temporizador
-function startTimer() {
-    minutesRemaining = minutes; //Reinicia los valores
-    secondsRemaining = seconds;
-    minSpan.textContent = minutesRemaining;
-    secSpan.textContent = secondsRemaining; // Actualiza el valor en los Span
-    timerId = setTimeout(
-        countdown,
-        1000
-    ); /* Empieza el temporizador pasado un segundo y ejecuta la función */
-}
-
-function stopTimer() {
-    clearTimeout(timerId);
-    btnIniciar.classList.remove("timer__button--active");
-    btnPausar.classList.remove("timer__button--active");
-}
+    initialMinutes = 25,
+    initialSeconds = 0,
+    minutesRemaining = 0,
+    secondsRemaining = 0;
 
 // Función para contar hacia abajo el temporizador
-function countdown() {
-    // Mientras haya minutos y segundos se seguirá ejecutando la función
-    secondsRemaining--; /* Resta un segundo */
-    let minutesFormat = minutesRemaining.toString().padStart(2, "0"); //Da formato 00 a los minutos
-    let secondsFormat = secondsRemaining.toString().padStart(2, "0"); // Da formato 00 a los segundos
+const countdown = () => {
+    if (minutesRemaining > 0 || secondsRemaining > 0) {
+        if (secondsRemaining > 0) {
+            secondsRemaining--;
+        } else {
+            secondsRemaining = 59;
+            minutesRemaining--;
+        }
 
-    secSpan.textContent = secondsFormat; /* Actualiza el valor en el Span */
-    if (secondsRemaining > 0) {
-        timerId = setTimeout(
-            countdown,
-            1000
-        ); /* Ejecuta la instrucción cada segundo (recursividad) */
-    } else {
-        // Si ya no hay segundos, comprueba que aún hayan minutos
-        minutesRemaining--; //Resta un minuto
-        secondsRemaining = 60; //Resetea los segundos
+        showMinutes.textContent = minutesRemaining.toString().padStart(2, "0");
+        showSeconds.textContent = secondsRemaining.toString().padStart(2, "0");
 
-        minSpan.textContent = minutesFormat; // Actualiza el valor de los minutos en el Span
-
-        timerId = setTimeout(countdown, 1000); //Ejecuta nuevamente la función
+        timerId = setTimeout(countdown, 1000);
     }
-}
+};
 
-// Evento de escucha para cuando inicien el temporizador
-btnDescanso.addEventListener("click", function () {
-    if (start) {
-        start = false;
-        stopTimer();
+const updateButtons = (activeButton, inactiveButton) => {
+    activeButton.classList.add("timer__button--active");
+    inactiveButton.classList.remove("timer__button--active");
+};
+
+const reset = (firstButton, secondButton, min, sec) => {
+    timerPaused
+        ? btnPause.classList.remove("timer__button--active")
+        : timerStarted
+        ? btnStart.classList.remove("timer__button--active")
+        : btnRestart.classList.remove("timer__button--active");
+
+    if (timerStarted) {
+        timerStarted = false;
+        clearTimeout(timerId);
     }
-    descanso = true;
-    timer.classList.add("timer--descanso");
-    btnDescanso.classList.add("timer__button--active");
-    btnPomodoro.classList.remove("timer__button--active");
-    minSpan.textContent = "05";
-    minutes = 4;
-});
 
-btnPomodoro.addEventListener("click", function () {
-    if (descanso) {
-        minutes = 25;
-        minSpan.textContent = "25";
-        timer.classList.remove("timer--descanso");
-        btnDescanso.classList.remove("timer__button--active");
-        btnPomodoro.classList.add("timer__button--active");
+    updateButtons(firstButton, secondButton);
+    showMinutes.textContent = min.toString().padStart(2, "0");
+    showSeconds.textContent = sec.toString().padStart(2, "0");
+};
+
+btnPomodoro.addEventListener("click", () => {
+    if (relaxTime) {
+        relaxTime = false;
+        reset(btnPomodoro, btnRelax, initialMinutes, initialSeconds);
     }
 });
 
-btnIniciar.addEventListener("click", function () {
-    if (!start) {
-        start = true; // Permanecerá en true hasta que el temporizador se detenga por completo
-        btnReiniciar.classList.remove("timer__button--active");
-        btnIniciar.classList.add("timer__button--active");
-        setTimeout(startTimer(), 1000); // Comienza el temporizador
-    } else if (pause) {
+let minutesRelax = 5,
+    secondsRelax = 0;
+
+btnRelax.addEventListener("click", () => {
+    if (!relaxTime) {
+        relaxTime = true;
+        reset(btnRelax, btnPomodoro, minutesRelax, secondsRelax);
+    }
+});
+
+btnStart.addEventListener("click", () => {
+    if (!timerStarted) {
+        timerPaused = false;
+        timerStarted = true; // El temporizador ya está iniciado
+        updateButtons(btnStart, btnRestart);
+        minutesRemaining = relaxTime ? minutesRelax : initialMinutes;
+        secondsRemaining = relaxTime ? secondsRelax : initialSeconds;
+        timerId = setTimeout(countdown, 1000);
+    } else if (timerPaused) {
         timerId = setTimeout(countdown, 1000);
         pause = false; //Ya no está en pausa (reanudado)
-        btnIniciar.classList.add("timer__button--active"); // Agrega el estado activo a reanudar
-        btnPausar.classList.remove("timer__button--active"); // Elimina el estado activo a pausa
+        updateButtons(btnStart, btnPause);
     }
 });
 
-btnPausar.addEventListener("click", function () {
-    if (start) {
-        pause = true;
-        stopTimer();
-        btnPausar.classList.add("timer__button--active");
-        btnIniciar.classList.remove("timer__button--active");
-        btnIniciar.innerHTML = "Reanudar";
+btnPause.addEventListener("click", () => {
+    if (timerStarted) {
+        timerPaused = true;
+        clearTimeout(timerId);
+        updateButtons(btnPause, btnStart);
+        btnStart.textContent = "Reanudar";
     }
 });
 
-btnReiniciar.addEventListener("click", function () {
-    if (start) {
-        start = false;
-        stopTimer();
-        btnReiniciar.classList.add("timer__button--active");
-        btnIniciar.innerHTML = "Iniciar";
-        minSpan.textContent = 25;
-        secSpan.textContent = "00";
+btnRestart.addEventListener("click", () => {
+    if (timerStarted) {
+        timerStarted = false;
+        clearTimeout(timerId);
+        timerPaused
+            ? updateButtons(btnRestart, btnPause)
+            : updateButtons(btnRestart, btnStart);
+        btnStart.textContent = "Iniciar";
+        showMinutes.textContent = relaxTime
+            ? minutesRelax.toString().padStart(2, "0")
+            : initialMinutes.toString().padStart(2, "0");
+        showSeconds.textContent = relaxTime
+            ? secondsRelax.toString().padStart(2, "0")
+            : initialSeconds.toString().padStart(2, "0");
     }
 });
