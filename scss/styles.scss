@@ -1,7 +1,7 @@
-$dark: #041444;
-$orange: #ff3c41;
-$yellow: #fdda48;
-$verde: #008f39;
+$black: #252B48;
+$navy: #445069;
+$teal: #5B9A8B;
+$yellow: #F7E987;
 
 // Reseteo de margin y padding a todos los elementos
 // Se agregar la propierdad box-sizing para no desbordar elementos más allá de su tamaño
@@ -13,7 +13,6 @@ $verde: #008f39;
 
 // Propiedades a etiquetas de maquetado
 html {
-    // background: #fff;
     font-size: 62.5%; //10px si el tamaño por defecto es 16px
     font-family: 'Roboto', sans-serif;
 }
@@ -21,7 +20,7 @@ html {
 header {
     width: 100%;
     font-size: 1rem; //10px
-    background: $dark;
+    background: $black;
     display: flex;
     justify-content: center;
 }
@@ -36,7 +35,7 @@ main {
 
 footer {
     font-size: 1rem;
-    background: $dark;
+    background: $black;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -49,7 +48,7 @@ footer {
     width: 100%;
     font-size: 1rem;
     padding: 5em 0;
-    background: $dark;
+    background: $black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,7 +62,7 @@ footer {
     justify-content: center;
     align-content: center;
     padding: 1em;
-    border-bottom: 2px solid rgba($yellow, 0.3);
+    border-bottom: 2px solid rgba($yellow, 0.4);
 
     &__logotipo {
         color: $yellow;
@@ -71,15 +70,12 @@ footer {
         display: flex;
         justify-content: start;
         align-items: center;
-        gap: 2%;
     }
 
     .nav {
         display: flex;
         justify-content: end;
         gap: 10%;
-        align-items: center;
-        flex-wrap: wrap;
 
         &__a {
             font-weight: 500;
@@ -94,54 +90,51 @@ footer {
     width: 40%;
     font-size: 1rem;
     padding: 3.5em;
-    background: $orange;
+    border-radius: 10px;
+    background: $teal;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5em;
-    border-radius: 10px;
-    border: none;
+    gap: 4em;
 
-    &__header {
+    &__header,
+    &__footer {
         width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 5%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    &__time {
+        font-size: 6.5em;
+        font-weight: 700;
     }
 
     &__button {
         font-size: 1.6em;
-        font-weight: 500;
-        padding: 0.5em 0;
+        width: 30%;
+        padding: 0.7em 0em;
         background: none;
-        color: $dark;
-        border: 2px solid rgba($yellow, 0.5);
+        color: $yellow;
+        background: $navy;
+        border: 2px solid rgba($navy, 0.5);
         border-radius: 20px;
         
         &:hover {
             cursor: pointer;
+            scale: 1.09;
+            transition: all 0.3s ease-in-out;
         }
         
         &--active {
             background: $yellow;
+            color: $black;
             font-weight: 700;
         }
     }
 
-    &__time {
-        font-size: 5.4em;
-        font-weight: 700;
-    }
-
-    &__footer {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2%;
-    }
-
     &--descanso {
-        background: $verde;
+        background: $teal;
     }
 }
 
@@ -193,12 +186,9 @@ footer {
         font-size: 1.6rem;
     }
 
-    &__copyright {
-        font-size: 1.2rem;
-    }
-
     &__me {
-        color: $orange;
+        color: $yellow;
+        font-weight: bold;
     }
 }
 
