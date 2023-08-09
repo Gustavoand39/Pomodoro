@@ -1,196 +1,236 @@
-$black: #252B48;
-$navy: #445069;
-$teal: #5B9A8B;
-$yellow: #F7E987;
+// Paleta de colores para el modo Pomodoro
+$navy: #537188;
+$beige: #cbb279;
+$lightBeige: #e1d4bb;
+$grey: #eeeeee;
+
+// Paleta de colores para el modo Descanso
+$green: #8dbf8b;
+$lightGreen: #a4bc92;
+$sage: #e1ecc8;
+$lightSage: #f7ffe5;
 
 // Reseteo de margin y padding a todos los elementos
 // Se agregar la propierdad box-sizing para no desbordar elementos más allá de su tamaño
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 // Propiedades a etiquetas de maquetado
 html {
-    font-size: 62.5%; //10px si el tamaño por defecto es 16px
-    font-family: 'Roboto', sans-serif;
+  font-size: 62.5%; //10px si el tamaño por defecto es 16px
+  font-family: "Roboto", sans-serif;
 }
 
 header {
-    width: 100%;
-    font-size: 1rem; //10px
-    background: $black;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  font-size: 1rem; //10px
+  display: flex;
+  justify-content: center;
 }
 
 main {
-    font-size: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 footer {
-    font-size: 1rem;
-    background: $black;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 // Propiedades a etiquetas contenedoras
-.main {
-    width: 100%;
-    font-size: 1rem;
-    padding: 5em 0;
-    background: $black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .header {
-    width: 80%;
-    display: grid;
-    font-size: 1.6em;
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
-    align-content: center;
-    padding: 1em;
-    border-bottom: 2px solid rgba($yellow, 0.4);
+  width: 100%;
+  display: grid;
+  font-size: 1.7em;
+  grid-template-columns: 1fr 1fr;
+  background: $navy;
+  color: $grey;
+  padding: 1em 2em;
+  border-bottom: 2px solid rgba($grey, 0.4);
 
-    &__logotipo {
-        color: $yellow;
-        font-weight: 500;
-        display: flex;
-        justify-content: start;
-        align-items: center;
+  &__logotipo {
+    font-weight: 500;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: end;
+    gap: 10%;
+
+    &__a {
+      font-weight: 500;
+      color: $grey;
+      text-decoration: none;
+      border: none;
     }
+  }
+
+  &--relax {
+    background: $green;
+    color: $lightSage;
+    border-bottom: 2px solid rgba($lightSage, 0.4);
 
     .nav {
-        display: flex;
-        justify-content: end;
-        gap: 10%;
-
-        &__a {
-            font-weight: 500;
-            color: $yellow;
-            text-decoration: none;
-            border: none;
-        }
+      &__a {
+        color: $lightSage;
+      }
     }
+  }
+}
+
+.main {
+  width: 100%;
+  font-size: 1rem;
+  padding: 5em 0;
+  background: $navy;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &--relax {
+    background: $green;
+  }
 }
 
 .timer {
-    width: 40%;
-    font-size: 1rem;
-    padding: 3.5em;
-    border-radius: 10px;
-    background: $teal;
+  width: 40%;
+  font-size: 1rem;
+  padding: 3.5em;
+  border-radius: 10px;
+  background: $lightBeige;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4em;
+
+  &__header,
+  &__footer {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4em;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
 
-    &__header,
-    &__footer {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
+  &__time {
+    font-size: 6.5em;
+    font-weight: 700;
+  }
+
+  &__button {
+    font-size: 1.7em;
+    width: 30%;
+    padding: 0.7em 0em;
+    background: none;
+    background: $beige;
+    color: $grey;
+    font-weight: bold;
+    border: 2px solid rgba($beige, 0.5);
+    border-radius: 20px;
+    cursor: pointer;
+
+    &:hover {
+      scale: 1.09;
+      transition: all 0.3s ease-in-out;
     }
 
-    &__time {
-        font-size: 6.5em;
-        font-weight: 700;
+    &--active {
+      background: $grey;
+      color: $navy;
+      font-weight: 700;
     }
+  }
 
-    &__button {
-        font-size: 1.6em;
-        width: 30%;
-        padding: 0.7em 0em;
-        background: none;
-        color: $yellow;
-        background: $navy;
-        border: 2px solid rgba($navy, 0.5);
-        border-radius: 20px;
-        
-        &:hover {
-            cursor: pointer;
-            scale: 1.09;
-            transition: all 0.3s ease-in-out;
-        }
-        
-        &--active {
-            background: $yellow;
-            color: $black;
-            font-weight: 700;
-        }
-    }
+  &--relax {
+    background: $sage;
 
-    &--descanso {
-        background: $teal;
+    .timer__button {
+      background: $lightGreen;
+      color: $lightSage;
+      border: 2px solid rgba($lightGreen, 0.5);
+
+      &--active {
+        background: $lightSage;
+        color: $green;
+      }
     }
+  }
 }
 
 .info {
-    width: 60%;
-    margin: 5em 0;
-    font-size: 1rem;
-    display: flex;
-    flex-direction: column;
-    text-align: justify;
+  width: 60%;
+  margin: 5em 0;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
 
-    &__section {
-        margin: 2em 0;
-    }
+  &__section {
+    margin: 2em 0;
+  }
 
-    &__title {
-        margin: 0.8em 0;
-        font-size: 3.4em;
-        font-weight: 700;
-        text-align: center;
-    }
+  &__title {
+    margin: 0.8em 0;
+    font-size: 3.4em;
+    font-weight: 700;
+    text-align: center;
+  }
 
-    &__subtitle {
-        font-size: 2.8em;
-    }
+  &__subtitle {
+    font-size: 2.8em;
+  }
 
-    &__hr {
-        margin: 1em 0;
-        opacity: 0.5;
-    }
+  &__hr {
+    margin: 1em 0;
+    opacity: 0.5;
+  }
 
-    &__text {
-        font-weight: 300;
-        font-size: 1.8em;
-        line-height: 1.8em;
-    }
+  &__text {
+    font-weight: 300;
+    font-size: 1.8em;
+    line-height: 1.8em;
+  }
 }
 
 .footer {
-    font-size: 1rem;
-    font-weight: 300;
-    text-align: center;
-    padding: 1.5em 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 300;
+  text-align: center;
+  background: $navy;
+  padding: 1.5em 0;
 
-    &__author {
-        font-size: 1.6rem;
-    }
+  &__author {
+    font-size: 1.6rem;
+  }
 
-    &__me {
-        color: $yellow;
-        font-weight: bold;
+  &__me {
+    color: $grey;
+    font-weight: bold;
+  }
+
+  &--relax {
+    background: $green;
+
+    .footer {
+      &__me {
+        color: $lightSage;
+      }
     }
+  }
 }
 
 //Importe de archivo scss con las media queries
-@import 'queries';
+@import "queries";

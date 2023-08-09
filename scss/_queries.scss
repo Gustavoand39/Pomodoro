@@ -1,38 +1,38 @@
 @media screen and (max-width: 900px) {
-    .timer {
-        width: 60%;
-    }
+  .timer {
+    width: 60%;
+  }
 }
 
 @media screen and (max-width: 650px) {
-    html {
-        font-size: 65%;
-    }
+  html {
+    font-size: 65%;
+  }
 
-    .timer {
-        width: 80%;
-    }
+  .timer {
+    width: 80%;
+  }
 
-    .info {
-        width: 80%;
-    }
+  .info {
+    width: 80%;
+  }
 }
 
 @media screen and (max-width: 500px) {
-    html {
-        font-size: 70%;
+  html {
+    font-size: 70%;
+  }
+
+  .timer {
+    &__header,
+    &__footer {
+      flex-direction: column;
+      align-items: center;
+      gap: 1em;
     }
 
-    .timer {
-        &__header,
-        &__footer {
-            flex-direction: column;
-            align-items: center;
-            gap: 1em;
-        }
-
-        &__button {
-            width: 100%;
-        }
+    &__button {
+      width: 100%;
     }
+  }
 }
