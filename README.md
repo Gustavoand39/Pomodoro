@@ -2,15 +2,11 @@
 
 Este proyecto es mi primer intento de aplicar mis conocimientos iniciales en programación web utilizando HTML, SCSS y JavaScript para crear un temporizador con la técnica de Pomodoro. La técnica Pomodoro es una técnica de gestión del tiempo que consiste en trabajar en intervalos de tiempo (llamados "pomodoros") seguidos de breves descansos.
 
-## Características
-
-- Temporizador Pomodoro: Permite configurar un temporizador para trabajar en intervalos de tiempo definidos (por ejemplo, 25 minutos) seguidos de un breve descanso (por ejemplo, 5 minutos).
-
 ## Tecnologías utilizadas
 
-- HTML: Lenguaje de marcado para la estructura de la página web.
-- SCSS: Lenguaje de hojas de estilo para aplicar estilos y diseño a la página.
-- JavaScript: Lenguaje de programación para implementar la lógica y la interactividad del temporizador.
+- **HTML:** Lenguaje de marcado para la estructura de la página web.
+- **SCSS:** Lenguaje de hojas de estilo para aplicar estilos y diseño a la página.
+- **JavaScript:** Lenguaje de programación para implementar la lógica y la interactividad del temporizador.
 
 ## Sitio web
 Puedes acceder al temporizador Pomodoro a través del siguiente enlace: [Enlace a Pomodoro Timer](https://gustavoand39.github.io/Pomodoro/)
