@@ -75,6 +75,7 @@ footer {
       color: $grey;
       text-decoration: none;
       border: none;
+      -webkit-tap-highlight-color: transparent;
     }
   }
 
@@ -140,6 +141,7 @@ footer {
     border: 2px solid rgba($beige, 0.5);
     border-radius: 20px;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent; //Evita que se marque el botón al hacer click
 
     &--active {
       background: $grey;
