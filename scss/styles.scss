@@ -141,11 +141,6 @@ footer {
     border-radius: 20px;
     cursor: pointer;
 
-    &:hover {
-      scale: 1.09;
-      transition: all 0.3s ease-in-out;
-    }
-
     &--active {
       background: $grey;
       color: $navy;

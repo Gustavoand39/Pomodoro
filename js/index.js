@@ -177,15 +177,20 @@ const modePomodoro = () => {
 
 // Evento para el modo pomodoro
 btnPomodoro.addEventListener("click", modePomodoro);
+btnPomodoro.addEventListener("touchstart", modePomodoro);
 
 // Evento para el modo de descanso
 btnRelax.addEventListener("click", modeRelax);
+btnRelax.addEventListener("touchstart", modeRelax);
 
 // Evento para el botón de inicio
+btnStart.addEventListener("touchstart", startTimer);
 btnStart.addEventListener("click", startTimer);
 
 // Evento para el botón de pausa
+btnPause.addEventListener("touchstart", pauseTimer);
 btnPause.addEventListener("click", pauseTimer);
 
 // Evento para el botón de reinicio
+btnRestart.addEventListener("touchstart", resetTimer);
 btnRestart.addEventListener("click", resetTimer);
