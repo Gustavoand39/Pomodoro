@@ -12,11 +12,8 @@ Este proyecto es mi primer intento de aplicar mis conocimientos iniciales en pro
 - SCSS: Lenguaje de hojas de estilo para aplicar estilos y diseño a la página.
 - JavaScript: Lenguaje de programación para implementar la lógica y la interactividad del temporizador.
 
-## Instrucciones de uso
-
-1. Clonar este repositorio: `git clone https://github.com/TU_USUARIO/pomodoro-timer.git`
-2. Acceder al directorio del proyecto: `cd pomodoro-timer`
-3. Abrir el archivo `index.html` en tu navegador web.
+## Sitio web
+Puedes acceder al temporizador Pomodoro a través del siguiente enlace: [Enlace a Pomodoro Timer](https://gustavoand39.github.io/Pomodoro/)
 
 ## Posibles mejoras
 
