@@ -42,6 +42,10 @@ const changeMode = (firstButton, secondButton, min, sec) => {
     clearInterval(timerInterval);
   }
 
+  if (timerPaused) {
+    btnStart.textContent = "Iniciar"; // Actualizar el texto del botón de inicio
+  }
+
   // Actualizar los botones
   updateButtons(firstButton, secondButton);
   // Actualizar el temporizador en el DOM
